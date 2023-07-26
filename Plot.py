@@ -49,7 +49,7 @@ plt.show
 #VR_X =[]
 #VR_Y =[]
 
-#plt.title("Median Prices")
+plt.title("Median Prices")
 #plt.xlabel("Amount of data")
 #plt.ylabel("Price")
 
