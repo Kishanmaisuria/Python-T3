@@ -1,5 +1,5 @@
 import pandas as pd
-
+#read_csv read_excel can be changed depending on da file 
 def BBsort(value):
     n = len(value)
         
@@ -11,15 +11,15 @@ def BBsort(value):
                 value[Obama], value[Obama +1] = value[Obama + 1], value[Obama]
                 
                 
-def read_csv(filepath, column):
-    dataframe1 = pd.read_csv(filepath,usecols = column)
+def read_excel(filepath, column):
+    dataframe1 = pd.read_excel(filepath,usecols = column)
     return dataframe1
 
 
          
 column = [0,4]
-filepath = 'C:\\Users\\sskis\\OneDrive\\Desktop\\Python stuff T3\\DiamondValues.csv'
-dataframe1 = read_csv(filepath, column)
+filepath = 'C:\\Users\\sskis\\OneDrive\\Desktop\\Python stuff T3\\Python-T3\\DiamondValues(1000).xlsx'
+dataframe1 = read_excel(filepath, column)
 
 print("Original Data:")
 print(dataframe1)
