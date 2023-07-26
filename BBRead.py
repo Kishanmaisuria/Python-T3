@@ -1,28 +1,38 @@
 import pandas as pd
 
-
-def read_csv(filepath, column):
-    dataframe1 = pd.read_csv(filepath,usecols = column)
-    return dataframe1
-
 def BBsort(value):
     n = len(value)
         
     for i in range(n):
         
-        for Borg in range(0, n-i-1):
+        for Obama in range(0, n-i-1):
             
-            if value[Borg] > value[Borg+ 1]:
-                value[Borg], value[Borg +1] = value[Borg + 1], value[Borg]
+            if value[Obama]['Price'] > value[Obama+ 1]['Price']:
+                value[Obama], value[Obama +1] = value[Obama + 1], value[Obama]
                 
                 
+def read_csv(filepath, column):
+    dataframe1 = pd.read_csv(filepath,usecols = column)
+    return dataframe1
+
+
          
-Hamber = [34, 54, 12, 9, 45, 87, -9]
 column = [0,4]
 filepath = 'C:\\Users\\sskis\\OneDrive\\Desktop\\Python stuff T3\\DiamondValues.csv'
 dataframe1 = read_csv(filepath, column)
+
+print("Original Data:")
 print(dataframe1)
 print("")
-sorted_date = dataframe1.sort_values(by='Price')
-print("Sorted Data: ")
-print(sorted_date)
+
+
+data_list = dataframe1.to_dict('records')
+
+
+BBsort(data_list)
+
+
+sorted_dataframe = pd.DataFrame(data_list)
+
+print("Sorted Data:")
+print(sorted_dataframe)
