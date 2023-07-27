@@ -1,51 +1,84 @@
-from matplotlib import pyplot as plt
-import pandas as pd 
+import pandas as pd
 
-def Qsort (value):
-    if len(value)<= 1:
-        return
-    else:
-        pivot = value[0]
-        left = [x for x in value[1:]if x < pivot]
-        right = [x for x in value[1:]if x > pivot]
-        return Qsort(left) + [pivot] + Qsort(right)
-    
-#def read_excel(filepath, column):
- #   dataframe1 = pd.read_excel(filepath)
-  #  return dataframe1
+import matplotlib.pyplot as plt
 
+ 
 
+def quicksort(arr):
 
-         
-column = 'Price'
-filepath = 'C:\\Users\\sskis\\OneDrive\\Desktop\\Python stuff T3\\Python-T3\\DiamondValues(1000).xlsx'
-dataframe1 = pd.read_excel(filepath)
+    if len(arr) <= 1:
 
-print("Original Data:")
-print(dataframe1)
+        return arr
 
+ 
 
+    pivot = arr[len(arr) // 2]
 
-data_list = dataframe1[column].tolist()
+    left = [x for x in arr if x < pivot]
 
+    middle = [x for x in arr if x == pivot]
 
-Qsort(data_list)
+    right = [x for x in arr if x > pivot]
 
+ 
 
-sorted_dataframe = pd.DataFrame(data_list)
-plt.plot(sorted_dataframe)
+    return quicksort(left) + middle + quicksort(right)
 
+ 
 
-print("Sorted Data:")
-print(sorted_dataframe)
+def read_excel_file(file_path):
 
+    try:
 
-plt.subplot(1,2,1)
-plt.plot(dataframe1)
-plt.ylabel("YES!")
+        # Read the Excel file using pandas
 
-plt.subplot(1,2,2)
-plt.plot(sorted_dataframe)
-plt.ylabel("NO!")
+        df = pd.read_excel(file_path)
 
-plt.show()
+ 
+
+        # Extract data from column 'Price' and drop any rows with non-numeric values
+
+        column_e = df['Price']
+
+        column_e = column_e.apply(pd.to_numeric, errors='coerce').dropna()
+
+ 
+
+        # Sort the data using quicksort
+
+        data_column_e = column_e.tolist()
+
+        data_column_e = quicksort(data_column_e)
+
+ 
+
+        # Plot the sorted data
+
+        plt.plot(data_column_e)
+
+        plt.xlabel('Index')
+
+        plt.ylabel('Price')
+
+        plt.title('Sorted Diamond Prices')
+
+        plt.show()
+
+ 
+
+    except FileNotFoundError:
+
+        print(f"File not found at path: {file_path}")
+
+    except pd.errors.ParserError:
+
+        print(f"Error parsing the file at path: {file_path}")
+
+ 
+	
+if __name__ == "__main__":
+
+    file_path = r"C:\\Users\\sskis\\OneDrive\\Desktop\\Python stuff T3\\Python-T3\\DiamondValues(1000).xlsx"
+
+    read_excel_file(file_path)
+
