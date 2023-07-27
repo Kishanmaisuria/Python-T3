@@ -1,17 +1,19 @@
 from matplotlib import pyplot as plt
 import pandas as pd 
+
 def Qsort (value):
     if len(value)<= 1:
         return
     else:
         pivot = value[0]
-        left = [x for x in value[1:]if x <= pivot]
-        right = [x for x in value[1:]if x >= pivot]
+        left = [x for x in value[1:]if x < pivot]
+        right = [x for x in value[1:]if x > pivot]
         return Qsort(left)+[pivot]+ Qsort(right)
     
 def read_excel(filepath, column):
     dataframe1 = pd.read_excel(filepath,usecols = column)
     return dataframe1
+
 
 
          
