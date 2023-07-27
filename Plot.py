@@ -25,10 +25,7 @@ dataframe1 = read_excel(filepath, column)
 
 print("Original Data:")
 print(dataframe1)
-plt.plot(dataframe1)
-print("")
-plt.ylabel('Original Data')
-plt.show
+
 
 
 data_list = dataframe1.to_dict('records')
@@ -43,13 +40,25 @@ plt.plot(sorted_dataframe)
 
 print("Sorted Data:")
 print(sorted_dataframe)
-plt.ylabel('Sorted data Bubblesort')
-plt.show
+
+
+plt.subplot(1,2,1)
+plt.plot(dataframe1)
+plt.ylabel("YES!")
+
+plt.subplot(1,2,2)
+plt.plot(sorted_dataframe)
+plt.ylabel("NO!")
+
+plt.show()
+
+
+
 
 #VR_X =[]
 #VR_Y =[]
 
-plt.title("Median Prices")
+
 #plt.xlabel("Amount of data")
 #plt.ylabel("Price")
 
