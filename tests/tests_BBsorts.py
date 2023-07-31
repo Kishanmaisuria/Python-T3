@@ -1,6 +1,6 @@
-import BBRead
+import BBsort
 
 def test_unsorted():
     # unsorted data with current data
 	unsorted_list = [64,]
-	assert BBRead.BBsort(unsorted_list) ==[]
+	assert BBsort.bubble_sort(unsorted_list) ==[]
